@@ -1,12 +1,10 @@
 import React from "react";
+import Image from 'next/image';
 
 export type ItemData = {
-  collectionAddress: string;
-  collectionName: string;
   imageUrl: string;
   name: string;
-  tokenAddress: string;
-  traits: Array<{ trait_type: string; value: string }>;
+  id: number;
 };
 
 type Props = {
@@ -15,23 +13,27 @@ type Props = {
 
 export function Item({ data }: Props) {
   const name = data.name;
-  const collection = data.collectionName;
+
+  // These dimensions define the aspect ratio for the image
+  const imageWidth = 320; // This is an example width
+  const imageHeight = 180; // This is an example height to maintain a 16:9 aspect ratio
 
   return (
     <div className="card shadow-xl bg-neutral text-neutral-content">
       {data.imageUrl && (
         <figure className="relative h-80">
-          <img
-            className="object-cover h-80 w-96 aspect-square	"
-            src={data.imageUrl}
+          {/* Image component with responsive layout */}
+          <Image
+            className="object-cover"
+            src={data.imageUrl.startsWith('http') ? data.imageUrl : data.imageUrl}
             alt={`Picture of ${name}`}
+            width={imageWidth}
+            height={imageHeight}
+            layout="responsive"
           />
         </figure>
       )}
-      <div className="card-body p-4 items-center text-center">
-        <h2 className="card-title m-0">{name}</h2>
-        {collection && <p>{collection}</p>}
-      </div>
+      {/* Card body can be uncommented if needed */}
     </div>
   );
 }

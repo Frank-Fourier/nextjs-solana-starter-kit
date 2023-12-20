@@ -15,7 +15,7 @@ export function ItemList({ items }: Props) {
       {items.length === 0 ? (
         <p className="p-4">No NFTs in your wallet</p>
       ) : (
-        items.map((item) => <Item data={item} key={item.tokenAddress} />)
+        items.map((item) => <Item data={item} key={item.id} />)
       )}
     </div>
   );

@@ -58,3 +58,42 @@ code {
   border-right-color: #eed;
   border-top-color: #ccb;
 }
+
+.custom-cursor {
+  cursor: url('/mouse.png'), auto;
+}
+
+/* Add this to your CSS file */
+.btn-ghost[title]:hover:after {
+  content: attr(title);
+  position: absolute;
+  background-color: black;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  z-index: 10;
+}
+
+/* Add or modify in your CSS file */
+.tooltip[data-tip]:hover:after {
+  content: attr(data-tip);
+  position: absolute;
+  background-color: black;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  z-index: 10;
+  font-weight: bold;
+  /* Adjust weight */
+  font-size: 0.75rem;
+  /* Adjust size */
+  text-align: center;
+}

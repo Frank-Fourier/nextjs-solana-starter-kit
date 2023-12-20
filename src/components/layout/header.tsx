@@ -1,26 +1,24 @@
 import { Menu } from "@components/layout/menu";
 import { ThemeToggle } from "@components/layout/theme-toggle";
 import React from "react";
+import Image from 'next/image';
 
-type Props = {
-  twitterHandle?: string;
-};
-
-export function Header({ twitterHandle }: Props) {
+export function Header() {
   return (
     <div className="navbar mb-6 shadow-lg bg-neutral text-neutral-content rounded-box">
       <div className="navbar-start">
-        <div className="px-2 mx-2">
-          <span className="text-sm md:text-lg font-bold">
-            NextJS Solana Starter Kit
-          </span>
-        </div>
+          <Image
+            src="/text.png" // Replace with your image path
+            alt="Logo"
+            width={300} // Set the width as needed
+            height={500} // Set the height as needed
+            layout="fixed"
+          />
       </div>
 
       <div className="navbar-end">
         <div className="hidden lg:block">
           <Menu
-            twitterHandle={twitterHandle}
             className="menu-horizontal px-1"
           />
         </div>

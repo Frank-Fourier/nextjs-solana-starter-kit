@@ -24,7 +24,9 @@ function MyApp({ Component, pageProps }: AppProps) {
       <ClientWalletProvider wallets={wallets}>
         <ReactUIWalletModalProviderDynamic>
           <Toaster position="bottom-right" reverseOrder={true} />
-          <Component {...pageProps} />
+          <div className="custom-cursor">
+            <Component {...pageProps} />
+          </div>
         </ReactUIWalletModalProviderDynamic>
       </ClientWalletProvider>
     </ConnectionProvider>

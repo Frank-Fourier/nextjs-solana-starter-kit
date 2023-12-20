@@ -7,7 +7,6 @@ import { HomeContent } from "@components/home/home-content";
 import { DrawerContainer } from "@components/layout/drawer-container";
 import { ButtonState } from "@components/home/button";
 import { Menu } from "@components/layout/menu";
-import { TwitterResponse } from "@pages/api/twitter/[key]";
 import { TxConfirmData } from "@pages/api/tx/confirm";
 import { TxCreateData } from "@pages/api/tx/create";
 import { TxSendData } from "@pages/api/tx/send";
@@ -20,12 +19,6 @@ import { Footer } from "@components/layout/footer";
 
 const Home: NextPage = () => {
   const { publicKey, signTransaction, connected } = useWallet();
-
-  const { data } = useDataFetch<TwitterResponse>(
-    connected && publicKey ? `/api/twitter/${publicKey}` : null
-  );
-
-  const twitterHandle = data && data.handle;
 
   const [txState, setTxState] = React.useState<ButtonState>("initial");
 
@@ -149,14 +142,13 @@ const Home: NextPage = () => {
       </Head>
       <DrawerContainer>
         <PageContainer>
-          <Header twitterHandle={twitterHandle} />
+          <Header />
           <HomeContent />
           <Footer />
         </PageContainer>
         <div className="drawer-side">
           <label htmlFor="my-drawer-3" className="drawer-overlay"></label>
           <Menu
-            twitterHandle={twitterHandle}
             className="p-4 w-80 bg-base-100 text-base-content"
           />
         </div>
